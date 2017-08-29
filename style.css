@@ -1,0 +1,19 @@
+header{
+	font-size: 60px;
+	text-align: center;
+}
+body{
+	background: url("img/bg.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+.container{
+	width: 1000px;
+	margin: 0 auto;
+	background: url("img/bg1.jpg");
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+	height: 100%;
+}
