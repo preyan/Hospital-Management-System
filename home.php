@@ -10,8 +10,15 @@
 	</header>
 	<nav>
 		<ul>
-			<li><a href="#">Packages</a></li>
-			<li><a href="#">Entry</a></li>
+		  <li><a href="#home">Home</a></li>
+		  <li><a href="#packages">Packages</a></li>
+		  <li class="dropdown">
+		    <a href="javascript:void(0)" class="dropbtn">Login</a>
+		    <div class="dropdown-content">
+		      <a href="#">Staff</a>
+		      <a href="#">Admin</a>
+		    </div>
+		  </li>
 		</ul>
 	</nav>
 </div>
