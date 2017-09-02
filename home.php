@@ -1,10 +1,11 @@
+<!--PHP-->
+
 <?php
 session_start();
 
 require_once('connection.php');
 
-$_SESSION['fromMain'] = 'false';				//_____PREVENT DIRECT ACCESS______
-	
+$_SESSION['fromMain'] = 'false';				//_____PREVENT DIRECT ACCESS______//	
 
 if(isset($_POST) & !empty($_POST))
 {
@@ -25,17 +26,17 @@ if(isset($_POST) & !empty($_POST))
 	}
 	else
 	{
-		echo "Invalid username or password";
+		$err_msg= "Invalid username or password !";
 	}
 }
 if(isset($_SESSION['username']))
 {
-	echo "User already logged in !";
+	$log_msg= "User already logged in !";
 }
 ?>
 
 
-
+<!--HTML-->
 
 <html>
 <head>
@@ -55,6 +56,9 @@ if(isset($_SESSION['username']))
 	</nav>
 	<form  action="" method="post">
 	<table id="login">
+		<th colspan="2">
+			<h2>STAFF LOGIN</h2>
+		<th>
 		<tr>
 			<td>USERNAME :</td><td><input type="text" name="username"></td>
 		</tr>
@@ -62,12 +66,19 @@ if(isset($_SESSION['username']))
 			<td>PASSWORD :</td><td><input type="password" name="password"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="reset" value="Reset"> <input type="submit" value="Login"></td>
-			
+			<td colspan ="2" align="center"><input type="reset" value="Reset"> &nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="Login"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<?php if(isset($err_msg)){ echo $err_msg; }?>
+				<?php if(isset($log_msg)){ header('location: home1.php'); }?>
+			</td>
 		</tr>
 	</table>
-	<!-- <div id="alrt" role="alert"></div> -->
+	
 	</form>
+
+
 </div>
 </body>
 </html>

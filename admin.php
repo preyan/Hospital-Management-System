@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 require_once('connection.php');
 
 
@@ -24,12 +25,11 @@ if(isset($_SESSION['fromMain']) && ($_SESSION['fromMain'] !== 'admin'))						//_
 	</header>
 	<nav>
 		<ul>
-		  <li><a href="#home">HOME</a></li>
 		  <li><a href="#packages">PACKAGES</a></li>
 		  <li id="admin"><a href="logout.php"><b>Logout</b></a></li>
 		</ul>
 	</nav>
-	
+	<p>Logged in as : <?php echo $_SESSION['username']; ?></p>
 </div>
 </body>
 </html>

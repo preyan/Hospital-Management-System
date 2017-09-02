@@ -4,7 +4,7 @@ session_start();
 require_once('connection.php');
 
 $_SESSION['fromMain'] = 'false';				//_____PREVENT DIRECT ACCESS______
-	
+$msg= " ";		
 
 if(isset($_POST) & !empty($_POST))
 {
@@ -19,18 +19,18 @@ if(isset($_POST) & !empty($_POST))
 	if($row==1)
 	{
 		$_SESSION['username']=$username;
-		$_SESSION['fromMain'] = "admin";
+		$_SESSION['fromMain'] = 'admin';
 		header('location:admin.php');
 
 	}
 	else
 	{
-		echo "Invalid username or password";
+		$err_msg= "Invalid username or password !";
 	}
 }
 if(isset($_SESSION['username']))
 {
-	echo "Already logged in !";
+	$log_msg= "Already logged in !";
 }
 ?>
 
@@ -53,8 +53,12 @@ if(isset($_SESSION['username']))
 		  <li id="admin"><a href="home.php">STAFF</a></li>
 		</ul>
 	</nav>
+
 	<form  action="" method="post">
 	<table id="login">
+		<th colspan="2">
+			<h2>ADMIN LOGIN</h2>
+		<th>
 		<tr>
 			<td>USERNAME :</td><td><input type="text" name="username"></td>
 		</tr>
@@ -62,11 +66,15 @@ if(isset($_SESSION['username']))
 			<td>PASSWORD :</td><td><input type="password" name="password"></td>
 		</tr>
 		<tr>
-			<td align="center"><input type="reset" value="Reset"></td>
-			<td align="center"><input type="submit" value="Login"></td>
+			<td colspan ="2" align="center"><input type="reset" value="Reset"> &nbsp;&nbsp;&nbsp;&nbsp; <input type="submit" value="Login"></td>
+		</tr>
+		<tr>
+			<td colspan="2" align="center">
+				<?php if(isset($err_msg)){ echo $err_msg; }?>
+				<?php if(isset($log_msg)){ header('location: admin.php'); }?>
+			</td>
 		</tr>
 	</table>
-	<!-- <div id="alrt" role="alert"></div> -->
 	</form>
 </div>
 </body>

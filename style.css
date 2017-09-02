@@ -54,12 +54,13 @@ li a.active {
     background-color: #999;
 }
 #login{
-	border: 0;
-	margin: 20% auto;
-	border-spacing: 15px 25px;
+	border-style: dashed;
+	margin: 15% auto 0 auto;
+	border-spacing: 30px;
 	font-size: 20px;
 }
 input {
 	font-size: 20px;
-	margin: 0 auto;
+	margin: 0 auto 0 auto;
+	border-style: groove;
 }
