@@ -11,7 +11,7 @@ if(isset($_POST) & !empty($_POST))
 	$username=mysqli_real_escape_string($con,$_POST['username']);
 	$pass=$_POST['password'];
 
-	$sql="SELECT * from staff WHERE username='$username' AND password='$pass'";
+	$sql="SELECT * from admin WHERE username='$username' AND password='$pass'";
 
 	$result=mysqli_query($con,$sql);
 
@@ -19,8 +19,8 @@ if(isset($_POST) & !empty($_POST))
 	if($row==1)
 	{
 		$_SESSION['username']=$username;
-		$_SESSION['fromMain'] = 'staff';
-		header('location:home1.php');
+		$_SESSION['fromMain'] = "admin";
+		header('location:admin.php');
 
 	}
 	else
@@ -30,7 +30,7 @@ if(isset($_POST) & !empty($_POST))
 }
 if(isset($_SESSION['username']))
 {
-	echo "User already logged in !";
+	echo "Already logged in !";
 }
 ?>
 
@@ -50,7 +50,7 @@ if(isset($_SESSION['username']))
 	<nav>
 		<ul>
 		  <li><a href="#packages">PACKAGES</a></li>
-		  <li id="admin"><a href="admin_login.php">ADMIN</a></li>
+		  <li id="admin"><a href="home.php">STAFF</a></li>
 		</ul>
 	</nav>
 	<form  action="" method="post">
@@ -62,8 +62,8 @@ if(isset($_SESSION['username']))
 			<td>PASSWORD :</td><td><input type="password" name="password"></td>
 		</tr>
 		<tr>
-			<td colspan="2" align="center"><input type="reset" value="Reset"> <input type="submit" value="Login"></td>
-			
+			<td align="center"><input type="reset" value="Reset"></td>
+			<td align="center"><input type="submit" value="Login"></td>
 		</tr>
 	</table>
 	<!-- <div id="alrt" role="alert"></div> -->
