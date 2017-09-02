@@ -51,6 +51,7 @@ li a.active {
 }
 #admin{
 	float: right;
+    background-color: #999;
 }
 #login{
 	border: 0;

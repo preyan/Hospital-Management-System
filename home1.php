@@ -1,3 +1,17 @@
+<?php
+session_start();
+require_once('connection.php');
+
+
+if(!isset($_SESSION['fromMain']))						//_____PREVENT DIRECT ACCESS______	
+{
+	header('location:home.php');
+}
+
+?>
+
+
+
 <html>
 <head>
 <title>M.K.Ghosh Hospital</title>
@@ -12,7 +26,7 @@
 		<ul>
 		  <li><a href="#home">HOME</a></li>
 		  <li><a href="#packages">PACKAGES</a></li>
-		  <li id="admin"><a href="#admin">ADMIN</a></li>
+		  <li id="admin"><a href="logout.php"><b>Logout</b></a></li>
 		</ul>
 	</nav>
 	

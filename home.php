@@ -1,6 +1,42 @@
 <?php
-include('conn.php');
+session_start();
+
+require_once('connection.php');
+
+$_SESSION['fromMain'] = "false";				//_____PREVENT DIRECT ACCESS______		
+
+
+if(isset($_POST) & !empty($_POST))
+{
+	$username=mysqli_real_escape_string($con,$_POST['username']);
+	$pass=$_POST['password'];
+
+	$sql="SELECT * from staff WHERE username='$username' AND password='$pass'";
+
+	$result=mysqli_query($con,$sql);
+
+	$row=mysqli_num_rows($result);
+	if($row==1)
+	{
+		$_SESSION['username']=$username;
+		$_SESSION['fromMain'] = "true";
+		header('location:home1.php');
+
+	}
+	else
+	{
+		include('logout.php');
+		echo "Invalid username or password";
+	}
+}
+if(isset($_SESSION['username']))
+{
+	echo "User already logged in !";
+}
 ?>
+
+
+
 
 <html>
 <head>
@@ -22,34 +58,18 @@ include('conn.php');
 	<form  action="" method="post">
 	<table id="login">
 		<tr>
-			<td>USER-ID :</td><td><input type="text" name="f_userid"></td>
+			<td>USERNAME :</td><td><input type="text" name="username"></td>
 		</tr>
 		<tr>
-			<td>PASSWORD :</td><td><input type="password" name="f_pass"></td>
+			<td>PASSWORD :</td><td><input type="password" name="password"></td>
 		</tr>
 		<tr>
 			<td align="center"><input type="reset" value="Reset"></td>
-			<td align="center"><input type="submit" name="loginbtn" value="Login"></td>
+			<td align="center"><input type="submit" value="Login"></td>
 		</tr>
-		<th><?php echo $error; ?></th>
 	</table>
+	<!-- <div id="alrt" role="alert"></div> -->
 	</form>
 </div>
 </body>
 </html>
-
-<?php
-if(isset($_POST['loginbtn']))
-{
-	$result=mysql_query("SELECT * FROM staff WHERE id = '".$_POST['f_userid']."' AND pass = '".$_POST['f_pass']."'");
-	$n=mysql_num_rows($result);
-	if($n==1)
-	{
-		header('location:home1.php');
-	}
-	else
-	{
-		$error = "Your User-Id or Password is invalid !";
-	}
-}
-?>
