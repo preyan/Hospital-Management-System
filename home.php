@@ -3,24 +3,24 @@
 <?php
 session_start();
 
-require_once('connection.php');
+include('connection.php');
 
 $_SESSION['fromMain'] = 'false';				//_____PREVENT DIRECT ACCESS______//	
 
 if(isset($_POST) & !empty($_POST))
 {
-	$username=mysqli_real_escape_string($con,$_POST['username']);
+	$username=mysql_real_escape_string($_POST['username'],$con);
 	$pass=$_POST['password'];
 
 	$sql="SELECT * from staff WHERE username='$username' AND password='$pass'";
 
-	$result=mysqli_query($con,$sql);
+	$result=mysql_query($sql,$con);
 
-	$row=mysqli_num_rows($result);
+	$row=mysql_num_rows($result);
 	if($row==1)
 	{
 		$_SESSION['username']=$username;
-		$_SESSION['fromMain'] = 'staff';
+		$_SESSION['fromMain'] = 'true';
 		header('location:home1.php');
 
 	}
@@ -37,10 +37,11 @@ if(isset($_SESSION['username']))
 
 
 <!--HTML-->
-
+<!doctype html>
 <html>
 <head>
 <title>M.K.Ghosh Hospital</title>
+
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
@@ -50,8 +51,8 @@ if(isset($_SESSION['username']))
 	</header>
 	<nav>
 		<ul>
-		  <li><a href="#packages">PACKAGES</a></li>
-		  <li id="admin"><a href="admin_login.php">ADMIN</a></li>
+		  <li><a href="#home">HOME</a></li>
+		  <li id="logout"><a class="active" href="#packages">LOGIN</a></li>
 		</ul>
 	</nav>
 	<form  action="" method="post">
