@@ -22,10 +22,10 @@ if(isset($_POST) & !empty($_POST))
 	$due=$_POST['amountdue'];
 	$user=$_SESSION['username'];
 	$_SESSION['mob']=$_POST['phone'];
-	
+	$dt= date("Y/m/d");
 	#insert data starts
-		$sql="INSERT INTO patient (firstname, lastname, phone, address, doctor, package, amount, paid, due, staff)
-		VALUES('".$fname."','".$lname."','".$phone."','".$address."','".$doctor."','".$package."','".$amount."','".$paid."','".$due."','".$user."')";
+		$sql="INSERT INTO patient (firstname, lastname, phone, address, doctor, package, amount, paid, due, staff, date1)
+		VALUES('".$fname."','".$lname."','".$phone."','".$address."','".$doctor."','".$package."','".$amount."','".$paid."','".$due."','".$user."','".$dt."')";
 
 		if (!mysql_query($sql))
 		{
@@ -52,7 +52,7 @@ if(isset($_POST) & !empty($_POST))
 <body>
 <div class="container">
 	<header>
-		M. K. GHOSH HOSPITAL
+		BILLING
 	</header>
 	<nav>
 		<ul>
@@ -63,7 +63,7 @@ if(isset($_POST) & !empty($_POST))
 		</ul>
 	</nav>
 	<form action="" method="post">
-	<table id="bill" align="center" cellpadding="7">
+	<table id="bill" align="center" cellpadding="7" cellspacing="5" style="min-width: 400px; margin: 10px auto 10% auto;">
 		<th colspan="2">
 			<h2>PATIENT DETAILS</h2>
 		<th>
@@ -116,11 +116,7 @@ if(isset($_POST) & !empty($_POST))
 			<td align="left"><input type="reset" value="Reset">
 			<input type="submit" value="Submit"></td>
 		</tr>
-		<tr>
-			<td colspan="2" align="center">
-				
-			</td>
-		</tr>
+		
 	</table>
 
 </div>

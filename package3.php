@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>M. K. GHOSH HOSPITAL : BILLING</title>
+<title>BHOWMICK GENERAL HOSPITAL : PACKAGE</title>
 </head>
 <body>
 <div id="print" style="width:1000px; min-width:960px; margin: 0 auto;">

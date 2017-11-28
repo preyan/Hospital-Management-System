@@ -8,10 +8,8 @@ include('connection.php');
 {
 	header('location:logout.php');
 }*/	
-	$package = $_SESSION['package'];
-	$sql="SELECT * from patient WHERE package='$package'";
+	$sql="SELECT * from patient ORDER BY package";
 	$result=mysql_query($sql,$con);
-	
 
 ?>
 <!--HTML-->
@@ -36,7 +34,7 @@ include('connection.php');
 		</ul>
 	</nav>
 	<form  action="" method="post">
-	<table border="1" cellspacing="4" align="center" style="width: 95%; margin: 15px auto; font-size: 17.5px; text-align: center;">
+	<table border="1" cellspacing="5" align="center" style="width: 95%; margin: 15px auto; font-size: 17.5px; text-align: center;">
 		<tr>
 		<th colspan="10">
 			<h2>DETAILS</h2>
@@ -47,6 +45,7 @@ include('connection.php');
 	while($row = mysql_fetch_array($result))
 	{
 	echo '
+		
 		<tr height="50">
 		<td>'.$row['package'].'</td>
 		<td>'.$row['date1'].'</td>

@@ -8,10 +8,11 @@ include('connection.php');
 {
 	header('location:logout.php');
 }*/	
-	$package = $_SESSION['package'];
-	$sql="SELECT * from patient WHERE package='$package'";
+	$dt_from = $_SESSION['result_date'] ;
+    $dt_to = $_SESSION['result_to'] ;
+
+	$sql="SELECT * from patient WHERE date1 >= '$dt_from' AND date1 <= '$dt_to' ORDER BY date1";
 	$result=mysql_query($sql,$con);
-	
 
 ?>
 <!--HTML-->
@@ -36,23 +37,24 @@ include('connection.php');
 		</ul>
 	</nav>
 	<form  action="" method="post">
-	<table border="1" cellspacing="4" align="center" style="width: 95%; margin: 15px auto; font-size: 17.5px; text-align: center;">
+	<table border="1" cellspacing="5" align="center" style="width: 95%; margin: 15px auto; font-size: 17.5px; text-align: center;">
 		<tr>
 		<th colspan="10">
 			<h2>DETAILS</h2>
 		</th>
 		</tr>
-		<th>Package</th> <th>Date</th> <th>Patient Name</th> <th>Phone</th> <th>Address</th> <th>Referred by</th>  <th>Amount</th> <th>Paid</th> <th>Due</th> <th>Billing Staff</th>
+		<th>Date</th> <th>Patient Name</th> <th>Phone</th> <th>Address</th> <th>Package</th> <th>Referred by</th> <th>Amount</th> <th>Paid</th> <th>Due</th> <th>Billing Staff</th>
 	<?php
-	while($row = mysql_fetch_array($result))
+	while($row=mysql_fetch_array($result))
 	{
 	echo '
+		
 		<tr height="50">
-		<td>'.$row['package'].'</td>
 		<td>'.$row['date1'].'</td>
 		<td>'.$row['firstname'].' '.$row['lastname'].'</td>
 		<td>'.$row['phone'].'</td>
 		<td>'.$row['address'].'</td>
+		<td>'.$row['package'].'</td>
 		<td>'.$row['doctor'].'</td>
 		<td>'.$row['amount'].'</td>
 		<td>'.$row['paid'].'</td>

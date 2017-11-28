@@ -17,7 +17,7 @@ body{
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height:600px;
+    min-height:700px;
     overflow: auto;
 }
 ul {
@@ -72,11 +72,9 @@ input {
 	margin: 0 auto 0 auto;
 	border-style: groove;
 }
+
 button{
 	font-size: 15px;
 	font-family: helvetica;
 	font-weight: 500;
-}
-body a{
-    text-decoration: none;
 }

@@ -40,7 +40,7 @@ if(isset($_SESSION['username']))
 <!doctype html>
 <html>
 <head>
-<title>M.K.Ghosh Hospital</title>
+<title>M. K. GHOSH HOSPITAL</title>
 
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
@@ -51,8 +51,8 @@ if(isset($_SESSION['username']))
 	</header>
 	<nav>
 		<ul>
-		  <li><a href="#home">HOME</a></li>
-		  <li id="logout"><a class="active" href="#packages">LOGIN</a></li>
+			<li><a class="active" href="home.php">LOGIN</a></li>
+		 	<li><a href="register.php">REGISTER</a></li>
 		</ul>
 	</nav>
 	<form  action="" method="post">

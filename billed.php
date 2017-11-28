@@ -16,13 +16,15 @@ $sql="SELECT * from patient WHERE phone='$phone'";
 $result=mysql_query($sql,$con);
 $row = mysql_fetch_array($result);
 $_SESSION['fromMain'] = 'true';
-$timestamp = strtotime($row['date']);	//GETTING DATE AS TIMESTAMP
+
+
+
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-<title>M. K. GHOSH HOSPITAL : BILLING</title>
+<title>M. K. GHOSH HOSPITAL</title>
 </head>
 <body>
 <div id="print" style="width:1000px; min-width:960px; margin: 0 auto;">
@@ -57,10 +59,10 @@ $timestamp = strtotime($row['date']);	//GETTING DATE AS TIMESTAMP
 		<td><b>AMOUNT DUE : </b></td><td><b><?php echo "Rs. ".$row['due'];?></b></td>
 	</tr>
 	<tr>
-		<td>DATE : </td><td><?php echo $date = date('d/m/Y', $timestamp);?></td>
+		<td>DATE : </td><td><?php echo date('d/m/Y');?></td>
 	</tr>
 	<tr>
-		<td>TIME : </td><td><?php echo date('h:m:s', $timestamp);?></td>
+		<td>TIME : </td><td><?php echo date('h:m:s');?></td>
 	</tr>
 	<tr>
 		<td>BILLED BY : </td><td><?php echo $row['staff'];?></td>
